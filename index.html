@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A/B Testing Submission Page</title>
+    <!-- import CSS styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="widthContainer">
+      <h1>A/B Testing</h1>
+      <h2>Overview</h2>
+      <p>
+        This project is an example of A/B testing. The goal of this project was to run statistical tests to determine if, and how, a different design affects user interaction. More specifically, I looked at how sorted, bold text affects user interaction with an appointment scheduling page. For data collection, I asked users to perform the same scheduling task on both versions of the page, and compared their interactions using the following metrics: whether they misclicked, the time spent on the page, and the number of clicks they made total. For simplicity, the original design will be referred to as Page A, and the page with changes to the UI will be referred to as Page B. 
+      </p>
+
+			<hr/>
+      <h2>Data Collection</h2>
+			<h3 class="bold">User Task</h3>
+			<p>Users were shown a page with doctor appointments and asked to "schedule an appointment with Adam Ng, MD at Morristown Medical Center on April 23, 2024." </p>
+
+			<h3 class="bold">Design Comparison: Page A</h3>
+			<p>Below is the original appointment-scheduling page.</p>
+      <div class="imgContainer scrollable">
+        <img class="screenshot" src="assets/PageA.png" alt="original appointment page"></img>
+      </div>
+			<h3 class="bold">Design Comparison: Page B</h3>
+			<p>Below is the appointment-scheduling page with a couple of modifications:</p>
+			<ul>
+        <li>
+          <p>
+            <span class="bold">Alphabetical Sorting:</span> The names of the doctors are sorted in alphabetical order, with A-names at the top of the page and Z-names near the bottom.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class="bold">Bolder Text:</span> The names of the doctors are in bigger, black font. The font size is 22px instead of 20px, and the color is black instead of grey. The button text is now black instead of white.
+          </p>
+        </li>
+      </ul>
+			<div class="imgContainer scrollable">
+        <img class="screenshot" src="assets/PageB.png" alt="appointment page with bold, alphabetically-sorted text"></img>
+      </div>
+
+			<h3 class="bold">Metrics of Focus</h3>
+			<p>I chose to focus on the following metrics because I thought these metrics would be a good indicator of how efficeint the users are in scheduling the appointment. Ideally, a more efficient scheduling process means the user makes fewer mistakes, spends less time, and uses fewer clicks to schedule an appointment. </p>
+			<ul>
+        <li>
+          <p>
+            <span class="bold">Misclick Rate:</span> A boolean flag indicating if the user pushed a button external to the task.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class="bold">Time on Page:</span> Total time (in milliseconds) that the user spent on the page.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class="bold">Number of Clicks:</span> The number of times the user clicked on the screen.
+          </p>
+        </li>
+      </ul>
+      <hr/>
+  
+      <h2>Hypotheses</h2>
+					<p>After choosing which metrics to focus on, I came up with null hypotheses for each (based on what I do not expect to see) as well as alternative hypotheses (based on what I do expect to see). </p>
+      <ul>
+				<h3 class="bold">Misclick Rate</h3>
+        <li>
+          <p>
+            <span class="bold">Null Hypothesis:</span> The original page produces the same misclick frequency as the page with bold, alphabetically-sorted text. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Prediction:</span>  I predict that I will be able to reject the null hypothesis because the page with bolder text, both for the button and the name of the doctor, should allow the user to differentiate between different buttons and different appointments better. Therefore, the user would be less likely to click on the wrong button or wrong appointment on the new page.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class="bold">Alternative Hypothesis:</span> The original page has a different misclick frequency than the page with bold, alphabetically-sorted text.
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Justification:</span>  I propose that there will be fewer misclicks on the new page because the bolder text for the doctor’s name and the schedule button will help the text stand out, so the user will be less likely to skip over or misread the appointments. Therefore, the user would be less likely to click on the wrong information on the new page.
+          </p>
+        </li>
+      </ul>
+			<ul>
+				<h3 class="bold">Time on Page</h3>
+        <li>
+          <p>
+            <span class="bold">Null Hypothesis:</span> The amount of time spent on the original page is equal to the amount of time spent on the page with bold, alphabetically-sorted text. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Prediction:</span>  I predict that I will be able to reject the null hypothesis because the new page’s alphabetical sorting of the bold names should allow users to navigate to the correct doctor faster. Therefore, the user would spend less time looking for the right appointment on the new page.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class="bold">Alternative Hypothesis:</span> The amount of time spent on the original page is greater than the amount of time spent on the page with bold, alphabetically-sorted text. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Justification:</span> I propose that a user will spend less time on the new page because the page is alphabetically-sorted by the doctor’s name, which is also in bold, so the user will notice that pattern and navigate to the correct appointment faster without having to spend as much time searching all appointments. 
+          </p>
+        </li>
+      </ul>
+			<ul>
+				<h3 class="bold">Number of Clicks</h3>
+        <li>
+          <p>
+            <span class="bold">Null Hypothesis:</span>  The number of clicks on the original page is equal to the number of clicks on the page with bold, alphabetically-sorted text. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Prediction:</span>  I predict that I will be able to reject the null hypothesis because the new page has sorted appointments and bold text, which will help the user get to the task they need. Therefore, the user will not click elsewhere as much when they can directly navigate to the right appointment and scheduling button.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class="bold">Alternative Hypothesis:</span> The number of clicks on the original page is greater than the number of clicks on the page with bold, alphabetically-sorted text. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Justification:</span> I propose that there will be fewer clicks on the page with bold, alphabetically-sorted text because the alphabetical order will help the user look through appointments faster, which means they won’t spend as much time distracted by buttons external to the task. Also, the bold text will help the user differentiate between similar-looking appointments and buttons, so there would be fewer unnecessary clicks. 
+          </p>
+        </li>
+      </ul>
+
+			<hr/>
+      <h2>Statistical Tests + Conclusions</h2>
+			<p>I then ran statistical tests to determine if there was enough evidence to reject the null hypotheses. </p>
+			<ul>
+				<h3 class="bold">Misclick Rate</h3>
+        <li>
+          <p>
+            <span class="bold">Type of Test:</span>  I chose to do a chi-squared test because I wanted to compare the mislick frequency for Page A with the misclick frequency for Page B. Since I collected the misclick data as boolean values (true if the user misclicked, and false if the user did not misclick), I was working with categorical data. Therefore, it made more sense to use a chi-squared test rather than a t-test to see if the different design affected the misclick frequency. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Statistical Significance + Important Values:</span> I found that the difference in the misclick frequency between Page A and Page B is statistically significant. For this chi-squared test,  the degrees of freedom was 1, so for a significance level of 0.05, the critical value was 3.841. Since I got a chi-squared value of 6.7879, which exceeds the critical value, this indicates that the magnitude of difference in the data is larger than what it would be by chance, and therefore the difference is statistically significant. In addition, the p-value was roughly 0.009178, and since p is less than 0.05, we can confirm that the difference is statistically significant, and that there is roughly a 0.92% chance that there is no difference in misclick frequency. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Conclusion:</span> Given the values listed above and what they tell us, I can conclude that I found statistically significant evidence that supports the alternative hypothesis. Since the chi-squared value exceeds the critical value (indicating a large magnitude of difference between Page A and Page B data, unlikely to be by chance), and the p-value is less than significance level (indicating a low probability that that the groups are the same), this supports the alternative hypothesis that there is a difference in misclick frequencies for Page A and Page B.
+          </p>
+        </li>
+      </ul>
+			<ul>
+				<h3 class="bold">Time on Page</h3>
+        <li>
+          <p>
+            <span class="bold">Type of Test:</span> I chose to do a one-tailed t-test because I wanted to see if the time spent on Page A was greater than the time spent on Page B. Since time is a continuous variable, and not categorical, it made more sense to do a t-test than a chi-squared test. Furthermore, since I cared about the direction of the comparison (where time is greater on Page A than on Page B), it made more sense to do a one-tail t-test than a two-tail t-test. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Statistical Significance + Important Values:</span> I found that the difference in the time on page between Page A and Page B is statistically significant. For this t-test, the degrees of freedom was about 18, so for a significance level of 0.05, the critical value was 1.734. Since I got a t-score of -3.4990, which exceeds the critical value (after taking the absolute value), this indicates that the magnitude of difference in the data is larger than what it would be by chance, and therefore the difference is statistically significant. In addition, the p-value was roughly 0.001305, and since p is less than 0.05, we can confirm that the difference is statistically significant, and that there is roughly a 0.13% chance that there is no difference in the time spent on each page. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Conclusion:</span> Given the values listed above and what they tell us, I can conclude that I found statistically significant evidence that supports the alternative hypothesis. Since the t-score exceeds the critical value (indicating a large, negative magnitude of difference between Page A and Page B data, unlikely to be by chance), and the p-value is less than significance level (indicating a low probability that that the groups are the same), this supports the alternative hypothesis that time spent on Page A is greater than the time spent on Page B. 
+          </p>
+        </li>
+      </ul>
+			<ul>
+				<h3 class="bold">Number of Clicks</h3>
+        <li>
+          <p>
+            <span class="bold">Type of Test:</span> I chose to do a one-tailed t-test because I wanted to see if the number of clicks on Page A was greater than the number of clicks on Page B. Since the count is a continuous variable, and not categorical, it made more sense to do a t-test than a chi-squared test. Furthermore, since I cared about the direction of the comparison (where the number of clicks is greater on Page A than on Page B), it made more sense to do a one-tail t-test than a two-tail t-test. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Statistical Significance + Important Values:</span> I found that the difference in the number of clicks between Page A and Page B is statistically significant. For this t-test, the degrees of freedom was about 16, so for a significance level of 0.05, the critical value was 1.746. Since I got a t-score of -2.4034, which exceeds the critical value (after taking the absolute value), this indicates that the magnitude of difference in the data is larger than what it would be by chance, and therefore the difference is statistically significant. In addition, the p-value was roughly 0.01437, and since p is less than 0.05, we can confirm that the difference is statistically significant, and that there is roughly a 1.44% chance that there is no difference in the number of clicks on both pages. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Conclusion:</span> Given the values listed above and what they tell us, I can conclude that I found statistically significant evidence that supports the alternative hypothesis. Since the t-score exceeds the critical value (indicating a large, negative magnitude of difference between Page A and Page B data, unlikely to be by chance), and the p-value is less than significance level (indicating a low probability that that the groups are the same), this supports the alternative hypothesis that Page A produces more clicks than Page B. 
+          </p>
+        </li>
+      </ul>
+
+			<hr/>
+      <h2>Summary Statistics </h2>
+			<p>After analyzing the statistical tests, I looked at the average, variance, median, and mode of the data in order to make more comparisons between the pages.</p>
+			<ul>
+				<h3 class="bold">Misclick Rate</h3>
+        <li>
+          <p>
+            <span class="bold">Page A:</span>  The average fraction of users who misclicked for Page A was 0.5625, and the variance for the data was 0.2461. The median was 1. The mode was 1 (which appeared 9 times).
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Page B:</span> The average fraction of users who misclicked on Page B was 0.125, and the variance for the data was 0.1094. The median was 0. The mode was 0 (which appeared 14 times).
+
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">So what?</span> Page B has a lower average than Page A, which indicates that on average, fewer users misclicked on Page B. Page B also has a lower variance, which indicates less variability in the data. Page B has a median of 0, which may indicate that a typical user did not misclick. In contrast, Page A has a median of 1, possibly indicating that a typical user did misclick. Page B has a mode of 0, which indicates that there are more users who did not misclick than users who did misclick. The opposite is true for Page A, which has a mode of 1. 
+
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">In conclusion:</span> Based on these numbers, it is likely that Page B is better than Page A in terms of reducing misclicks. This is important because it is implied that the user is able to complete the task more efficiently if they make fewer misclicks. I think that this difference is caused by the introduction of bolder text, which allowed users of Page B to differentiate between similar-looking appointments and buttons, and thus also misclick less often. 
+          </p>
+        </li>
+      </ul>
+			<ul>
+				<h3 class="bold">Time on Page</h3>
+        <li>
+          <p>
+            <span class="bold">Page A:</span>  The average time users spent on Page A was 29411.25 ms, and the variance for the data was 341951899.9 ms^2. The median was 26621.5 ms. There was no mode since all values appeared once.
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Page B:</span> The average time users spent on Page B was 12509.25 ms, and the variance for the data was 31390946.07 ms^2. The median was 10418 ms. There was no mode since all values appeared once.
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">So what?</span> Page B has a lower average than Page A, which indicates that on average, users spent less time on Page B than Page A. Page B also has a lower variance, which indicates less variability in the data. Page B has a lower median, which may indicate that a typical user of Page B spends less time on the page than a typical user of Page A. No mode does not tell us much, other than the fact that users spent differing amounts of time on the page.
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">In conclusion:</span> Based on these numbers, it is likely that Page B is better than Page A in terms of reducing time spent on the page. This is important because it is implied that the user is able to complete the task faster if less time is spent on the page. I think that this difference is caused by the introduction of alphabetical sorting of the text, which allowed users of Page B to search the appointments faster, and therefore also spend less time on the page. 
+          </p>
+        </li>
+      </ul>
+			<ul>
+				<h3 class="bold">Number of Clicks</h3>
+        <li>
+          <p>
+            <span class="bold">Page A:</span>  The average number of clicks for Page A was 6.4375, and the variance for the data was 40.2625. The median was 4. The mode was 2 (which appeared 6 times).
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">Page B:</span> The average number of clicks on Page B was 2.5625, and the variance for the data was 1.3292. The median was 2. The mode was 2 (which appeared 12 times).
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">So what?</span> Page B has a lower average than Page A. This indicates that on average, users clicked fewer times on Page B than Page A. Page B also has a lower variance, which indicates less variability in the data. Page B’s median is lower, which may indicate that the typical user on Page B spent fewer clicks than a typical user on Page A. Page B’s mode of 2 has a greater count than Page A’s mode, which indicates that there were more users who clicked twice for Page B than there were for Page A. 
+          </p>
+        </li>
+				<li>
+          <p>
+            <span class="bold">In conclusion:</span> Based on these numbers, it is likely that Page B is better than Page A in terms of getting the user to click fewer times. This is important because the task to schedule an appointment requires only 2 clicks, so it is assumed that a user who makes fewer clicks is able to complete the task more efficiently. I think that this difference is caused by the introduction of alphabetical sorting of the text as well as the bold text, which allowed users of Page B to look through appointments faster, identify the desired appointment faster, and therefore also spend fewer clicks trying to get to the appointment.
+          </p>
+        </li>
+      </ul>
+
+      <hr/>
+      <h2>Takeaways</h2>
+      <p>
+				While working on this project, I learned the importance of statistics when trying to measure the effectiveness of a design change. Saying that a page is "better" than another doesn't say much, but comparing metrics like the time spent on the page was helpful in making more objective observations about the user experience. It was surprising that a subtle change like font color could make a bigger impact than expected. It would be interesting to see if this trend would remain if we collect even more data. 
+      </p>
+    </div>
+  </body>
+</html>
